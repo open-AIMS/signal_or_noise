@@ -18,4 +18,4 @@ Rplot.pdf
 *.RData
 *tmp*
 TODO.*md
-
+.Rproj.user
