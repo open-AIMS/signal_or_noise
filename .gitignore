@@ -3,11 +3,7 @@ output/
 ignore/
 data/
 old/
-
-
-appendix/*
-!appendix/*.qmd
-!appendix/extra.R
+appendix/
 
 *.pdf
 *.zip
@@ -19,3 +15,5 @@ Rplot.pdf
 *tmp*
 TODO.*md
 .Rproj.user
+. R p r o j . u s e r /  
+ 
