@@ -1,4 +1,5 @@
 Signal or noise? Minimising errors in image-based AI for landscape-scale marine ecosystem monitoring
+<img src="appendix/resources/logo_color.png" alt="Logo" align="right" width="180">
 =========================================================================================
 
 <!-- badges: start -->
@@ -17,7 +18,7 @@ Signal or noise? Minimising errors in image-based AI for landscape-scale marine 
 
 ## Content 
 
-In this repo, we will create the code to generate results presented in the paper and in the appendix.    
+In this repo, we will create the code to generate results presented in the paper and appendix.    
 
 ## License
 

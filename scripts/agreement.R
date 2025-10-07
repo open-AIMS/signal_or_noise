@@ -10,12 +10,14 @@
 #
 #
 # Author: Julie Vercelloni
-# Modified data: 04/06/2025
+# Modified data: 04/08/2025
 # ============================================================
 
 #### Setup ----
 rm(list = ls())
 setwd(here::here())
+#setwd("C:/Users/jvercell/OneDrive - Australian Institute of Marine Science/AIMS/01_Research projects/BlueCarbon/Algae_classify/signal_or_noise")
+
 source("R/functions.R")
 source("R/packages.R")
 
@@ -127,12 +129,12 @@ dat_full <- rbind(post_dat, pre_dat) %>%
   filter(!UnityLabels == "Fishes")
 
 #### Plot Agreement Barplot ----
-p_bar <- ggplot(dat_full, aes(x = Plot, y = Kappa, group = Type, fill = Int), col = "black") +
+p_bar <- ggplot(dat_full, aes(x = Plot, y = Kappa, group = Type, fill = Int)) +
   geom_bar(col = "black", stat = "identity", position = "identity", alpha = .4) +
   theme_bw() +
   ylim(-.8, .8) +
   ylab("Kappa score") +
-  xlab("Class") +
+  xlab("Label") +
   geom_hline(yintercept = 0, linetype = "dashed") +
   geom_hline(yintercept = 0.75, linetype = "dashed", col = "gray80") +
   geom_hline(yintercept = -0.75, linetype = "dashed", col = "gray80") +
@@ -155,6 +157,31 @@ p_bar <- ggplot(dat_full, aes(x = Plot, y = Kappa, group = Type, fill = Int), co
   geom_text(label = "0.75", aes(x = 19.2, y = .71), size = 3.7, fontface = "italic") +
   geom_text(label = "0.40", aes(x = 19.2, y = .36), size = 3.7, fontface = "italic") +
   geom_text(label = "0.40", aes(x = 19.2, y = -.44), size = 3.7, fontface = "italic") +
-  scale_fill_manual("", values = viridisLite::viridis(8)[c(3, 5, 1)])
+  scale_fill_manual("", values = viridisLite::viridis(8)[c(3, 5, 1)]) +
+  scale_x_discrete(
+    labels = c(
+      Substrate = "Substrate",
+      Lobophora = expression(italic("Lobophora")),  
+      Sargassum = expression(italic("Sargassum")),
+      Turbinaria = expression(italic("Turbinaria")),
+      Sargassopsis  = expression(italic("Sargassopsis ")),
+      Padina = expression(italic("Padina")),
+      Laurencia = expression(italic("Laurencia")),
+      Dictyopteris = expression(italic("Dictyopteris")),
+      Hormophysa = expression(italic("Hormophysa")),
+      Dictyota = expression(italic("Dictyota")),
+      `Hard coral_Corymbose` = "Hard coral_Corymbose",
+      `Hard coral_Massive` = "Hard coral_Massive",
+      `Cant Tell ` = "Cant Tell ",
+      `Hard coral_Tabulate` = "Hard coral_Tabulate",
+      `Hard coral_Encrusting` = "Hard coral_Encrusting",
+      `Other_Cnidaria` = "Other_Cnidaria",
+       Acanthophora = expression(italic("Acanthophora")),
+      `Other_Sampling Infrastructure` = "Other_Sampling Infrastructure",
+      `Hard coral_Sub-massive` = "Hard coral_Sub-massive"
+    )
+  )
 
 p_bar
+
+#ggsave(p_bar, file = "../R/figures_paper/main/agreement_prevspost.png", width = 10.5, height = 7) path to change

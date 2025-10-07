@@ -10,7 +10,7 @@
 #
 #
 # Author: Julie Vercelloni
-# Modified data: 04/06/2025
+# Modified data: 04/10/2025
 # ============================================================
 
 #### Setup ----
@@ -19,15 +19,17 @@ setwd(here::here())
 source("R/functions.R")
 source("R/packages.R")
 
-
 #### Read and Prepare F1 Score Data ----
 f1_pre <- read.csv("data/f1_scores_heatmap_pre_calibration.csv") %>% mutate(type = "without calibration")
 f1_post <- read.csv("data/f1_scores_heatmap_post_calibration.csv") %>% mutate(type = "with calibration")
 
 f1_all <- rbind(f1_pre, f1_post) %>%
   mutate(across(c(type), as.factor))%>%
-  mutate(type = relevel(type, ref = "without calibration")) 
-
+  mutate(type = relevel(type, ref = "without calibration")) %>%
+  mutate(
+    Dataset.Name   = str_replace_all(Dataset.Name, "Observer", "Annotator"),
+    Dataset.Name.2 = str_replace_all(Dataset.Name.2, "Observer", "Annotator")
+  )
 
 #### Plot F1 Score Heatmap ----
 p_heat <- ggplot(f1_all, aes(x = Dataset.Name, y = Dataset.Name.2, fill = F1.Score)) +
@@ -73,7 +75,7 @@ ggplot(ent_all, aes(x = as.factor(Agreement.Counts), y = Entropies)) +
     x = "", 
     y = "Entropies",                      
   ) +
-  scale_fill_viridis_d("Number of Observers in Agreement") +  
+  scale_fill_viridis_d("Number of Annotators in Agreement") +  
   theme_minimal(base_size = 14) +
   theme(
     strip.text = element_blank(), 
@@ -286,6 +288,11 @@ dat_class <- rbind(dat_pre_class, dat_post_class,
   mutate(across(c(type, UnityLabels), as.factor))%>%
   mutate(type = relevel(type, ref = "pre calibration")) 
 
+dat_class <- dat_class %>%
+  mutate(UnityLabels = case_when(
+    UnityLabels %in% c("Sargassum", "Lobophora", "Sargassopsis") ~ paste0("*", UnityLabels, "*"),
+    TRUE ~ UnityLabels
+  ))
 
 #### Plot Percent Cover Comparison Across Models and Calibration States ----
 p1 <- ggplot(dat_class, aes(x = fct_reorder(UnityLabels, mean, .desc = TRUE), 
@@ -296,11 +303,11 @@ p1 <- ggplot(dat_class, aes(x = fct_reorder(UnityLabels, mean, .desc = TRUE),
                 width = 0.2,
         position=position_dodge(width=0.5)) +  
   facet_wrap(~type, scales = "free_x") +
-  xlab("Class") +
+  xlab("Label") +
   ylab("Cover (%)") +
    theme_minimal(base_size = 14) + 
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.x = element_markdown(angle = 45, hjust = 1),
     strip.text = element_blank(),  
     axis.title = element_text(size = 14),                
     axis.text = element_text(size = 12),                
@@ -308,12 +315,12 @@ p1 <- ggplot(dat_class, aes(x = fct_reorder(UnityLabels, mean, .desc = TRUE),
     panel.grid.minor = element_line(color = "gray95"),
     legend.position = "bottom"
   )  +
-  scale_color_manual(values = c("#F1BB7B", "#FD6467", "#5B1A18"))
-
+  scale_color_manual(values = c("#F1BB7B", "#FD6467", "#5B1A18") 
+  )
 
 #### Combine Plots for Presentation ----
 p_fig <- p_heat / p_ent / p1 +
   plot_layout(heights = c(2, 1, 1)) +  
   plot_annotation(tag_levels = 'A')
 
-p_fig
+#ggsave(p_fig, file = "../R/figures_paper/main/noise_propagation.png", width = 8, height = 10) # path to change
