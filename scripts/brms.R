@@ -2,19 +2,14 @@
 # brms Models - Assessing level noise 
 # 
 # Description:
-# 
-# 
-#  
-#  
-#   
-#  
-#
+# This script processes reef survey data collected via images and transects for the model.
+# Data are used into a model to distangle bias from noise sources.
+# Model diagnostics are performed. 
 # Author: Julie Vercelloni
-# Modified data: 01/09/2025
+# Modified data: 15/10/2025
 # ============================================================
 
 #### Setup ----
-#setwd("C:/Users/jvercell/OneDrive - Australian Institute of Marine Science/AIMS/01_Research projects/BlueCarbon/Algae_classify/signal_or_noise/appendix")
 
 rm(list = ls())
 setwd(here::here())
@@ -207,30 +202,30 @@ model_formula <- bf(Cover ~ Source +
          (1 | Site) + (1 | Observer)) 
 
 ##################### Run model for the main groups 
-# options(mc.cores = parallel::detectCores())
-# rstan_options(auto_write = TRUE)
-# rstan_options(threads_per_chain = 1)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = TRUE)
+rstan_options(threads_per_chain = 1)
 
-# plan(multisession, workers = 4) 
+plan(multisession, workers = 4) 
 
-# fits <- response_vars %>%
-#   set_names() %>%
-#   future_map(~ brm(
-#     formula = model_formula,
-#     data = dat_all %>% filter(Comm == .x),
-#     family = "Beta",
-#    iter = 1e4, warmup = 5e3, cores = 4, chains = 4,
-#    sample_prior = "yes", seed = 10, save_pars = save_pars(all = TRUE),
-#    control = list(max_treedepth = 20, adapt_delta = 0.999),
-#    backend = "cmdstanr"
-#   ))
+fits <- response_vars %>%
+  set_names() %>%
+  future_map(~ brm(
+    formula = model_formula,
+    data = dat_all %>% filter(Comm == .x),
+    family = "Beta",
+   iter = 1e4, warmup = 5e3, cores = 4, chains = 4,
+   sample_prior = "yes", seed = 10, save_pars = save_pars(all = TRUE),
+   control = list(max_treedepth = 20, adapt_delta = 0.999),
+   backend = "cmdstanr"
+  ))
 
-#saveRDS(fits, file = "data/model_fits.RDS")
-#future::plan(sequential) 
+saveRDS(fits, file = "data/model_fits.RDS")
+future::plan(sequential) 
 
-# Read model outputs 
+# Read model outputs - if model saved 
 
-fits <- readRDS("data/model_fits.RDS")
+#fits <- readRDS("data/model_fits.RDS")
 
 # Conditional effects
 
@@ -394,7 +389,7 @@ ran_5 <- fits[[5]] %>%
 combined_ran_plot <- (ran_1 + ran_2 + ran_4 + ran_5) +
   plot_layout(design = p_lay, guides = "collect", axis_titles = "collect") 
 
-#ggsave(combined_ran_plot, file = "../R/figures_paper/main/level_noise_method.png", width = 8, height = 6) path to change
+#ggsave(combined_ran_plot, file = "level_noise_method.png", width = 8, height = 6) 
 
 # Model residuals
 
@@ -404,7 +399,7 @@ residuals <- imap(fits, ~ {
 )
 
 for (i in 1:length(response_vars)) {
-  png(paste0("../R/figures_paper/suppl/residuals_method_", response_vars[i], ".png"), # path to change
+  png(paste0("residuals_method_", response_vars[i], ".png"),
       width = 12, height = 12, units = "cm", res = 300)
   plotQQunif(simulationOutput = residuals[[i]], 
              testDispersion = FALSE,
@@ -430,7 +425,7 @@ diagnostic_plots <- imap(fits, ~ {
 combined_plot <- wrap_elements(diagnostic_plots[[1]]) + wrap_elements(diagnostic_plots[[2]]) +
 wrap_elements(diagnostic_plots[[4]]) + wrap_elements(diagnostic_plots[[5]])
 
-#ggsave(combined_plot, file = "../R/figures_paper/suppl/model_method_diagnostics.png", width = 12, height = 10) path to change
+#ggsave(combined_plot, file = "model_method_diagnostics.png", width = 12, height = 10) 
 
 #### Model 1.2: Null model ----
 
@@ -512,9 +507,9 @@ fits <- response_vars %>%
 saveRDS(fits, file = "data/model_fits_exp.RDS")
 future::plan(sequential) 
 
-# Read model outputs 
+# Read model outputs (if pre-saved)
 
-fits <- readRDS("data/model_fits_exp.RDS")
+#fits <- readRDS("data/model_fits_exp.RDS")
 
 # Conditional effects
 
@@ -560,8 +555,7 @@ combined_cond_plot <- (conditional_plots[[1]] + conditional_plots[[2]] + conditi
   theme(plot.tag.position  = c(.055, 1), legend.position = "bottom", legend.text = element_text(size = 14)) 
  combined_cond_plot
  
-# ggsave(combined_cond_plot, file = "../R/figures_paper/main/pattern_noise_field.png", width = 8, height = 8) path to change
-
+ggsave(combined_cond_plot, file = "pattern_noise_field.png", width = 8, height = 8) 
 
 # Random effects
 
@@ -674,8 +668,7 @@ ran_5 <- fits[[5]] %>%
 combined_ran_plot <- (ran_1 + ran_2 + ran_4 + ran_5) +
   plot_layout(design = p_lay, guides = "collect", axis_titles = "collect") 
 
-#ggsave(combined_ran_plot, file = "../R/figures_paper/main/level_noise_exp.png", width = 8, height = 6) path to change
-
+ggsave(combined_ran_plot, file = "level_noise_exp.png", width = 8, height = 6)
 
 # Model residuals
 
@@ -685,7 +678,7 @@ residuals <- imap(fits, ~ {
 )
 
 for (i in 1:length(response_vars)) {
-  png(paste0("../R/figures_paper/suppl/residuals_exp_", response_vars[i], ".png"), # path to change
+  png(paste0("residuals_exp_", response_vars[i], ".png"), 
       width = 12, height = 12, units = "cm", res = 300)
   plotQQunif(simulationOutput = residuals[[i]], 
              testDispersion = FALSE,
@@ -711,7 +704,7 @@ diagnostic_plots <- imap(fits, ~ {
 combined_plot <- wrap_elements(diagnostic_plots[[1]]) + wrap_elements(diagnostic_plots[[2]]) +
 wrap_elements(diagnostic_plots[[4]]) + wrap_elements(diagnostic_plots[[5]])
 
-# ggsave(combined_plot, file = "../R/figures_paper/suppl/model_method_diagnostics_exp.png", width = 12, height = 10) path to change
+ggsave(combined_plot, file = "model_method_diagnostics_exp.png", width = 12, height = 10) 
 
 
 #### Model 2.2: Null model ----

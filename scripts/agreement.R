@@ -7,16 +7,13 @@
 # computes inter-observer agreement statistics (Fleiss’ Kappa),
 # compares agreement before and after calibration,
 # and visualizes agreement levels across benthic classes.
-#
-#
 # Author: Julie Vercelloni
-# Modified data: 04/08/2025
+# Modified data: 04/10/2025
 # ============================================================
 
 #### Setup ----
 rm(list = ls())
 setwd(here::here())
-#setwd("C:/Users/jvercell/OneDrive - Australian Institute of Marine Science/AIMS/01_Research projects/BlueCarbon/Algae_classify/signal_or_noise")
 
 source("R/functions.R")
 source("R/packages.R")
@@ -151,8 +148,8 @@ p_bar <- ggplot(dat_full, aes(x = Plot, y = Kappa, group = Type, fill = Int)) +
     strip.background = element_rect(fill = "white"),
     panel.grid = element_blank()
   ) +
-  geom_text(label = "with calibration", aes(x = 1.9, y = .80), size = 4.5) +
-  geom_text(label = "without calibration", aes(x = 1.9, y = -.79), size = 4.5) +
+  geom_text(label = "calibrated", aes(x = 1.9, y = .80), size = 4.5) +
+  geom_text(label = "uncalibrated", aes(x = 1.9, y = -.79), size = 4.5) +
   geom_text(label = "0.75", aes(x = 19.2, y = -.79), size = 3.7, fontface = "italic") +
   geom_text(label = "0.75", aes(x = 19.2, y = .71), size = 3.7, fontface = "italic") +
   geom_text(label = "0.40", aes(x = 19.2, y = .36), size = 3.7, fontface = "italic") +
@@ -184,4 +181,4 @@ p_bar <- ggplot(dat_full, aes(x = Plot, y = Kappa, group = Type, fill = Int)) +
 
 p_bar
 
-#ggsave(p_bar, file = "../R/figures_paper/main/agreement_prevspost.png", width = 10.5, height = 7) path to change
+ggsave(p_bar, file = "agreement_prevspost.png", width = 10.5, height = 7) 

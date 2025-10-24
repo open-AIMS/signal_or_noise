@@ -1,14 +1,11 @@
 # ============================================================
 # Propagation of noise into machine learning models
-#
 # Description:
 # This script analyzes classification agreement across datasets pre- and post-calibration. 
 # It generates heatmaps of F1 scores, visualizes entropy distributions by agreement counts,
 # and compares percent cover estimates from individual and ensemble models,
 # as well as diver-based data, for different benthic classes.
 # The script also merges data from multiple sources and creates comparative visualizations.
-#
-#
 # Author: Julie Vercelloni
 # Modified data: 04/10/2025
 # ============================================================
@@ -20,12 +17,12 @@ source("R/functions.R")
 source("R/packages.R")
 
 #### Read and Prepare F1 Score Data ----
-f1_pre <- read.csv("data/f1_scores_heatmap_pre_calibration.csv") %>% mutate(type = "without calibration")
-f1_post <- read.csv("data/f1_scores_heatmap_post_calibration.csv") %>% mutate(type = "with calibration")
+f1_pre <- read.csv("data/f1_scores_heatmap_pre_calibration.csv") %>% mutate(type = "uncalibrated")
+f1_post <- read.csv("data/f1_scores_heatmap_post_calibration.csv") %>% mutate(type = "calibrated")
 
 f1_all <- rbind(f1_pre, f1_post) %>%
   mutate(across(c(type), as.factor))%>%
-  mutate(type = relevel(type, ref = "without calibration")) %>%
+  mutate(type = relevel(type, ref = "uncalibrated")) %>%
   mutate(
     Dataset.Name   = str_replace_all(Dataset.Name, "Observer", "Annotator"),
     Dataset.Name.2 = str_replace_all(Dataset.Name.2, "Observer", "Annotator")
@@ -53,12 +50,12 @@ p_heat <- ggplot(f1_all, aes(x = Dataset.Name, y = Dataset.Name.2, fill = F1.Sco
 
 
 #### Read and Prepare Entropy Data ----
-ent_pre <- read.csv("data/entropies_precal.csv") %>% mutate(type = "pre calibration")
-ent_post <- read.csv("data/entropies_postcal.csv") %>% mutate(type = "post calibration")
+ent_pre <- read.csv("data/entropies_precal.csv") %>% mutate(type = "uncalibrated")
+ent_post <- read.csv("data/entropies_postcal.csv") %>% mutate(type = "calibrated")
 
 ent_all <- rbind(ent_pre, ent_post) %>% 
   mutate(across(c(type), as.factor))%>%
-  mutate(type = relevel(type, ref = "pre calibration")) 
+  mutate(type = relevel(type, ref = "uncalibrated")) 
 
 
 #### Plot Entropy Boxplots ----
@@ -86,7 +83,6 @@ ggplot(ent_all, aes(x = as.factor(Agreement.Counts), y = Entropies)) +
     axis.text.x = element_blank(),
     legend.position = "bottom"
   ) 
-
 
 ######################### Prepare Percent Cover Data Pre and Post Calibration for Individual Models ----
 
@@ -323,4 +319,4 @@ p_fig <- p_heat / p_ent / p1 +
   plot_layout(heights = c(2, 1, 1)) +  
   plot_annotation(tag_levels = 'A')
 
-#ggsave(p_fig, file = "../R/figures_paper/main/noise_propagation.png", width = 8, height = 10) # path to change
+ggsave(p_fig, file = "noise_propagation.png", width = 8, height = 10) 
