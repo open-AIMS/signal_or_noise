@@ -1,7 +1,7 @@
 pdfs/
 output/
 ignore/
-data/
+data_FULL/
 old/
 appendix/
 
@@ -15,5 +15,6 @@ Rplot.pdf
 *tmp*
 TODO.*md
 .Rproj.user
-. R p r o j . u s e r /  
+. R p r o j . u s e r / 
+ 
  

@@ -1,0 +1,37 @@
+,Dataset Name,Dataset Name 2,F1 Score
+0,Observer 1,Observer 1,1.0
+1,Observer 1,Observer 2,0.7363638436145583
+2,Observer 1,Observer 3,0.7271428380499385
+3,Observer 1,Observer 4,0.721594426947979
+4,Observer 1,Observer 5,0.6543281185553795
+5,Observer 1,Ensemble,0.7795232702508048
+6,Observer 2,Observer 1,0.7212538849172977
+7,Observer 2,Observer 2,1.0
+8,Observer 2,Observer 3,0.7143701705048147
+9,Observer 2,Observer 4,0.6813144636599162
+10,Observer 2,Observer 5,0.656651671301095
+11,Observer 2,Ensemble,0.7730560303491976
+12,Observer 3,Observer 1,0.6789513447755464
+13,Observer 3,Observer 2,0.7127766438996175
+14,Observer 3,Observer 3,1.0
+15,Observer 3,Observer 4,0.8073034339458185
+16,Observer 3,Observer 5,0.7958178064143931
+17,Observer 3,Ensemble,0.9029414252707009
+18,Observer 4,Observer 1,0.6606770411960653
+19,Observer 4,Observer 2,0.673810190079696
+20,Observer 4,Observer 3,0.801006815361661
+21,Observer 4,Observer 4,1.0
+22,Observer 4,Observer 5,0.8434275437913209
+23,Observer 4,Ensemble,0.8887943938287067
+24,Observer 5,Observer 1,0.5783588620540386
+25,Observer 5,Observer 2,0.6574757525216195
+26,Observer 5,Observer 3,0.7892237448321442
+27,Observer 5,Observer 4,0.8435530656269616
+28,Observer 5,Observer 5,1.0
+29,Observer 5,Ensemble,0.8486902318334354
+30,Ensemble,Observer 1,0.7307260372284197
+31,Ensemble,Observer 2,0.7665561580164535
+32,Ensemble,Observer 3,0.8970585747292992
+33,Ensemble,Observer 4,0.8879369081103514
+34,Ensemble,Observer 5,0.847154643512825
+35,Ensemble,Ensemble,1.0

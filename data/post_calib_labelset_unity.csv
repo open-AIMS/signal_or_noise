@@ -1,0 +1,48 @@
+Var1,Test,,UnityLabels
+Macroalgae | Erect fine branching | Red | Rhodomelaceae | Acanthophora,Post-calibration,,Acanthophora
+Exclude | Cant Tell,Post-calibration,,Cant Tell
+Bacterial mats | Cyanobacteria,Post-calibration,,Cyanobacteria
+Macroalgae | Erect coarse branching | Brown | Dictyotaceae | Dictyopteris,Post-calibration,,Dictyopteris
+Macroalgae | Sheet-like  membraneous | Brown | Dictyotaceae | Dictyota,Post-calibration,,Dictyota
+Fishes,Post-calibration,,Fishes
+Fishes | Bony fishes,Post-calibration,,Fishes
+Fishes | Elasmobranchs | Sharks,Post-calibration,,Fishes
+Cnidaria | Corals | Stony corals,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Bottlebrush,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Branching,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Corymbose,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Digitate,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Encrusting,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Foliose  plate,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Massive,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Staghorn,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Sub-massive,Post-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Tabulate,Post-calibration,,Hard coral
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Hormophysa,Post-calibration,,Hormophysa
+Macroalgae | Erect fine branching | Red | Rhodomelaceae | Laurencia,Post-calibration,,Laurencia
+Macroalgae | Laminate | Brown | Dictyotaceae | Lobophora,Post-calibration,,Lobophora
+Ascidians | Unstalked | Solitary,Post-calibration,,Other
+Exclude | Sampling Infrastructure,Post-calibration,,Other
+Exclude | Water,Post-calibration,,Other
+Macroalgae | Articulated calcareous | Green | Udoteaceae | Halimeda,Post-calibration,,Other algae
+Macroalgae | Articulated calcareous | Red | Corallinaceae | Amphiroa,Post-calibration,,Other algae
+Macroalgae | Erect coarse branching | Brown | Sargassaceae,Post-calibration,,Other algae
+Macroalgae | Erect coarse branching | Green | Codiaceae | Codium,Post-calibration,,Other algae
+Macroalgae | Erect fine branching | Green | Caulerpaceae | Caulerpa,Post-calibration,,Other algae
+Macroalgae | Filamentous  filiform | Red,Post-calibration,,Other algae
+Cnidaria,Post-calibration,,Other
+Cnidaria | Corals,Post-calibration,,Other Cnidarian
+Cnidaria | Corals | Black and Octocorals | Fan (2D) | Fern-frond,Post-calibration,,Other Cnidarian
+Macroalgae | Laminate | Brown | Dictyotaceae | Padina,Post-calibration,,Padina
+Macroalgae | Laminate | Red | Peyssonneliaceae | Peyssonnelia,Post-calibration,,Other algae
+Macroalgae | Large canopy-forming | Brown | Sargassaceae | Sargassopsis,Post-calibration,,Sargassopsis
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Sargassum,Post-calibration,,Sargassum
+Seagrasses | Elliptical leaves,Post-calibration,,Seagrass
+Seagrasses | Strap-like leaves,Post-calibration,,Seagrass
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Sirophysalis,Post-calibration,,Sirophysalis
+Sponges,Post-calibration,,Sponges
+Sponges | Erect forms | Branching,Post-calibration,,Sponges
+Sponges | Massive forms | Simple,Post-calibration,,Sponges
+Substrate,Post-calibration,,Substrate
+Substrate | Unconsolidated (soft),Post-calibration,,Substrate
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Turbinaria,Post-calibration,,Turbinaria

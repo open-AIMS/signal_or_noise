@@ -156,11 +156,11 @@ dat_image_final <- dat_image_final_raw2 %>%
     Source   = first(.x$Source)
   )) %>%
   mutate(Observer = case_when(
-    Observer == "cal"   ~ "Observer 3",
-    Observer == "chris" ~ "Observer 2",
-    Observer == "jamie" ~ "Observer 1",
-    Observer == "mary"  ~ "Observer 4",
-    Observer == "shaun" ~ "Observer 5",
+    Observer == "3"   ~ "Observer 3",
+    Observer == "2" ~ "Observer 2",
+    Observer == "1" ~ "Observer 1",
+    Observer == "4"  ~ "Observer 4",
+    Observer == "5" ~ "Observer 5",
     TRUE                ~ "NA"
   ))
 
@@ -273,7 +273,7 @@ CD
  
 ggsave(combined_cond_plot, file = "../R/figures_paper/main/method_bias.png", width = 8, height = 8)
 
-# Random effects
+# Random effects - annotator level
 
 random_df_list <- imap(fits, ~ {
 spread_draws(.x, r_Observer[Observer, ]) %>%
@@ -390,6 +390,115 @@ combined_ran_plot <- (ran_1 + ran_2 + ran_4 + ran_5) +
   plot_layout(design = p_lay, guides = "collect", axis_titles = "collect") 
 
 #ggsave(combined_ran_plot, file = "level_noise_method.png", width = 8, height = 6) 
+
+# Random effects - site level
+
+random_df_list <- imap(fits, ~ {
+spread_draws(.x, r_Site[Site, ]) %>%
+  compare_levels(r_Site, by = Site) %>%
+  ungroup() %>%
+  mutate(condition = reorder(Site, r_Site), 
+        class = .y) 
+})
+
+random_df <- bind_rows(random_df_list)
+
+ran_1 <- fits[[1]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = bquote(italic(.(response_vars[1])))
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )  +
+    scale_x_continuous(
+      breaks = seq(-1.5, 1.7, by = 0.5),
+      limits = c(-1.5, 1.7)
+    )
+
+ran_2 <- fits[[2]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = bquote(italic(.(response_vars[2])))
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )   +
+    scale_x_continuous(
+      breaks = seq(-1.5, 1.7, by = 0.5),
+      limits = c(-1.5, 1.7)
+    )
+
+ran_4 <- fits[[4]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = bquote(italic(.(response_vars[4])))
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )   +
+    scale_x_continuous(
+      breaks = seq(-1.5, 1.7, by = 0.5),
+      limits = c(-1.5, 1.7)
+    )
+
+ran_5 <- fits[[5]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = response_vars[5]
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )  +
+    scale_x_continuous(
+      breaks = seq(-1.5, 1.7, by = 0.5),
+      limits = c(-1.5, 1.7)
+    )
+
+combined_ran_plot <- (ran_1 + ran_2 + ran_4 + ran_5) +
+  plot_layout(design = p_lay, guides = "collect", axis_titles = "collect") 
+
+#ggsave(combined_ran_plot, file = "site_random_effect.png", width = 8, height = 6) 
 
 # Model residuals
 
@@ -557,7 +666,7 @@ combined_cond_plot <- (conditional_plots[[1]] + conditional_plots[[2]] + conditi
  
 ggsave(combined_cond_plot, file = "pattern_noise_field.png", width = 8, height = 8) 
 
-# Random effects
+# Random effects - annotator level
 
 random_df_list <- imap(fits, ~ {
 spread_draws(.x, r_Observer[Observer, ]) %>%
@@ -668,7 +777,116 @@ ran_5 <- fits[[5]] %>%
 combined_ran_plot <- (ran_1 + ran_2 + ran_4 + ran_5) +
   plot_layout(design = p_lay, guides = "collect", axis_titles = "collect") 
 
-ggsave(combined_ran_plot, file = "level_noise_exp.png", width = 8, height = 6)
+#ggsave(combined_ran_plot, file = "level_noise_exp.png", width = 8, height = 6)
+
+# Random effects - site level
+
+random_df_list <- imap(fits, ~ {
+spread_draws(.x, r_Site[Site, ]) %>%
+  compare_levels(r_Site, by = Site) %>%
+  ungroup() %>%
+  mutate(condition = reorder(Site, r_Site), 
+        class = .y) 
+})
+
+random_df <- bind_rows(random_df_list)
+
+ran_1 <- fits[[1]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = bquote(italic(.(response_vars[1])))
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )   +
+    scale_x_continuous(
+      breaks = seq(-2.5, 2, by = 0.5),
+      limits = c(-2.5, 2)
+    )
+
+ran_2 <- fits[[2]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = bquote(italic(.(response_vars[2])))
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )   +
+    scale_x_continuous(
+      breaks = seq(-2.5, 2, by = 0.5),
+      limits = c(-2.5, 2)
+    )
+
+ran_4 <- fits[[4]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = bquote(italic(.(response_vars[4])))
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )    +
+    scale_x_continuous(
+      breaks = seq(-2.5, 2, by = 0.5),
+      limits = c(-2.5, 2)
+    )
+
+ran_5 <- fits[[5]] %>%
+  spread_draws(r_Site[Site, ]) %>%
+  median_qi(condition_mean = r_Site, .width = .75) %>%
+  ggplot(aes(y = reorder(Site, condition_mean), 
+             x = condition_mean, 
+             xmin = .lower, xmax = .upper)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "grey60") +
+  geom_pointinterval(size = 1, fatten_point = 2, color = "#2C3E50") +
+  labs(
+    x = "Effect Size (median ± 95% CI)",
+    y = "",
+    title = response_vars[5]
+  ) +
+  theme_pubr() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    legend.position = "none"
+  )  +
+    scale_x_continuous(
+      breaks = seq(-2.5, 2, by = 0.5),
+      limits = c(-2.5, 2)
+    )
+
+combined_ran_plot <- (ran_1 + ran_2 + ran_4 + ran_5) +
+  plot_layout(design = p_lay, guides = "collect", axis_titles = "collect") 
+
+ggsave(combined_ran_plot, file = "site_random_effect_exp.png", width = 8, height = 6) 
 
 # Model residuals
 
@@ -704,7 +922,8 @@ diagnostic_plots <- imap(fits, ~ {
 combined_plot <- wrap_elements(diagnostic_plots[[1]]) + wrap_elements(diagnostic_plots[[2]]) +
 wrap_elements(diagnostic_plots[[4]]) + wrap_elements(diagnostic_plots[[5]])
 
-ggsave(combined_plot, file = "model_method_diagnostics_exp.png", width = 12, height = 10) 
+#ggsave(combined_plot, file = "model_method_diagnostics_exp.png", width = 12, height = 10) 
+
 
 
 #### Model 2.2: Null model ----

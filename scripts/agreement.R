@@ -19,22 +19,22 @@ source("R/functions.R")
 source("R/packages.R")
 
 #### Load and Prepare Pre-Calibration Data ----
-dat_pre_cal <- read.csv("data/cal-precal_csv.csv") %>%
-  rename(identifier_cal = identifier,
-         display_name_cal = display_name) %>%
-  dplyr::select(x, y, identifier_cal, display_name_cal, image_name)
+dat_pre_3 <- read.csv("data/3-precal_csv.csv") %>%
+  rename(identifier_3 = identifier,
+         display_name_3 = display_name) %>%
+  dplyr::select(x, y, identifier_3, display_name_3, image_name)
 
-dat_pre_chris <- read.csv("data/chris-precal_csv.csv") %>%
-  rename(identifier_chris = identifier,
-         display_name_chris = display_name) %>%
-  dplyr::select(x, y, identifier_chris, display_name_chris, image_name)
+dat_pre_2 <- read.csv("data/2-precal_csv.csv") %>%
+  rename(identifier_2 = identifier,
+         display_name_2 = display_name) %>%
+  dplyr::select(x, y, identifier_2, display_name_2, image_name)
 
-dat_pre_jamie <- read.csv("data/jamie-precal_csv.csv") %>%
-  rename(identifier_jamie = identifier,
-         display_name_jamie = display_name) %>%
-  dplyr::select(x, y, identifier_jamie, display_name_jamie, image_name)
+dat_pre_1 <- read.csv("data/1-precal_csv.csv") %>%
+  rename(identifier_1 = identifier,
+         display_name_1 = display_name) %>%
+  dplyr::select(x, y, identifier_1, display_name_1, image_name)
 
-dat_pre_all <- reduce(list(dat_pre_cal, dat_pre_chris, dat_pre_jamie), dplyr::left_join)
+dat_pre_all <- reduce(list(dat_pre_3, dat_pre_2, dat_pre_1), dplyr::left_join)
 
 #### Compute Fleiss’ Kappa for Overall Pre-Calibration Agreement ----
 agg_details_overall_pre <- kappam.fleiss(dat_pre_all %>%

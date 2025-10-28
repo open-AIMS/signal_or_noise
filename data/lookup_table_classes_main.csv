@@ -1,0 +1,29 @@
+transect_class,image_class,merge 
+Sargassum,Macroalgae | Erect coarse branching | Brown | Sargassaceae | Sargassum,Sargassum
+Sargassopsis,Macroalgae | Large canopy-forming | Brown | Sargassaceae | Sargassopsis,Sargassopsis
+Lobophora,Macroalgae | Laminate | Brown | Dictyotaceae | Lobophora,Lobophora
+Dictyota,Macroalgae | Sheet-like  membraneous | Brown | Dictyotaceae | Dictyota,Dictyota
+Halimeda,Macroalgae | Articulated calcareous | Green | Udoteaceae | Halimeda,Halimeda
+pavement,Substrate,Substrate
+sand,Substrate,Substrate
+rubble,Substrate,Substrate
+NA,Cnidaria | Corals,Hard coral
+coral.corymbose,Cnidaria | Corals | Stony corals | Corymbose,Hard coral
+Sirophysalis,Macroalgae | Erect coarse branching | Brown | Sargassaceae | Sirophysalis,Sirophysalis
+Eucheuma,Macroalgae | Erect coarse branching | Red |,Eucheuma
+Hormophysa,Macroalgae | Erect coarse branching | Brown | Sargassaceae | Hormophysa,Hormophysa
+Hydroclathrus,Macroalgae | Globose saccate | Brown | Scytosiphonaceae | Hydroclathrus,Hydroclathrus
+Laurencia,Macroalgae | Erect fine branching | Red | Rhodomelaceae | Laurencia,Laurencia
+coral.massive,Cnidaria | Corals | Stony corals | Massive,Hard coral
+Galaxaura,Macroalgae | Articulated calcareous | Red |,Galaxaura
+Padina,Macroalgae | Laminate | Brown | Dictyotaceae | Padina,Padina
+Turbinaria,Macroalgae | Erect coarse branching | Brown | Sargassaceae | Turbinaria,Turbinaria
+coral.free,Cnidaria: Corals: Stony corals: Free-living,Hard coral
+coral.tabulate,Cnidaria | Corals | Stony corals | Tabulate,Hard coral
+Acanthophora,Macroalgae | Erect fine branching | Red | Rhodomelaceae | Acanthophora,Acanthophora
+Dictyopteris,Macroalgae | Erect coarse branching | Brown | Dictyotaceae | Dictyopteris,Dictyopteris
+Halophila,Seagrasses: Elliptical leaves,Seagrass
+Holothuria.atra,Echinoderms: Sea cucumbers,Sea cucumbers
+sponge,Sponges,Sponge
+Caulerpa,Macroalgae | Erect fine branching | Green | Caulerpaceae | Caulerpa,Caulerpa
+NA,Exclude | Cant Tell,Can't tell

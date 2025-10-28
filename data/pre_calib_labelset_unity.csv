@@ -1,0 +1,64 @@
+Var1,Test,,UnityLabels
+Macroalgae | Erect fine branching | Red | Rhodomelaceae | Acanthophora,Pre-calibration,,Acanthophora
+Exclude | Cant Tell,Pre-calibration,,Cant Tell
+Macroalgae | Erect coarse branching | Brown | Dictyotaceae | Dictyopteris,Pre-calibration,,Dictyopteris
+Macroalgae | Sheet-like  membraneous | Brown | Dictyotaceae | Dictyota,Pre-calibration,,Dictyota
+Cnidaria | Corals | Stony corals | Corymbose,Pre-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Encrusting,Pre-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Massive,Pre-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Sub-massive,Pre-calibration,,Hard coral
+Cnidaria | Corals | Stony corals | Tabulate,Pre-calibration,,Hard coral
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Hormophysa,Pre-calibration,,Hormophysa
+Macroalgae | Erect fine branching | Red | Rhodomelaceae | Laurencia,Pre-calibration,,Laurencia
+Macroalgae | Laminate | Brown | Dictyotaceae | Lobophora,Pre-calibration,,Lobophora
+Choat Tag,Pre-calibration,,Other
+Echinoderms | Sea cucumbers | Benthic,Pre-calibration,,Other
+Exclude | Sampling Infrastructure,Pre-calibration,,Other
+Fishes | Bony fishes,Pre-calibration,,Fishes
+Molluscs | Bivalves,Pre-calibration,,Other
+Molluscs | Gastropods,Pre-calibration,,Other
+Macroalgae,Pre-calibration,,Other algae
+Macroalgae | Articulated calcareous | Red,Pre-calibration,,Other algae
+Macroalgae | Encrusting,Pre-calibration,,Other algae
+Macroalgae | Encrusting | Brown,Pre-calibration,,Other algae
+Macroalgae | Encrusting | Green,Pre-calibration,,Other algae
+Macroalgae | Encrusting | Red,Pre-calibration,,Other algae
+Macroalgae | Erect coarse branching,Pre-calibration,,Other algae
+Macroalgae | Erect coarse branching | Brown,Pre-calibration,,Other algae
+Macroalgae | Erect coarse branching | Brown | Sargassaceae,Pre-calibration,,Other algae
+Macroalgae | Erect coarse branching | Green,Pre-calibration,,Other algae
+Macroalgae | Erect coarse branching | Red,Pre-calibration,,Other algae
+Macroalgae | Erect fine branching,Pre-calibration,,Other algae
+Macroalgae | Erect fine branching | Brown,Pre-calibration,,Other algae
+Macroalgae | Erect fine branching | Brown | Dictyotaceae,Pre-calibration,,Other algae
+Macroalgae | Erect fine branching | Brown | Dictyotaceae | Lobospira,Pre-calibration,,Other algae
+Macroalgae | Erect fine branching | Red,Pre-calibration,,Other algae
+Macroalgae | Erect fine branching | Red | Bonnemaisoniaceae | Asparagopsis,Pre-calibration,,Other algae
+Macroalgae | Filamentous  filiform,Pre-calibration,,Other algae
+Macroalgae | Filamentous  filiform | Brown,Pre-calibration,,Other algae
+Macroalgae | Filamentous  filiform | Green,Pre-calibration,,Other algae
+Macroalgae | Filamentous  filiform | Red,Pre-calibration,,Other algae
+Macroalgae | Globose  saccate | Brown,Pre-calibration,,Other algae
+Macroalgae | Globose  saccate | Brown | Scytosiphonaceae,Pre-calibration,,Other algae
+Macroalgae | Globose  saccate | Brown | Scytosiphonaceae | Colpomenia,Pre-calibration,,Other algae
+Macroalgae | Laminate,Pre-calibration,,Other algae
+Macroalgae | Laminate | Brown | Dictyotaceae,Pre-calibration,,Other algae
+Macroalgae | Sheet-like  membraneous | Brown,Pre-calibration,,Other algae
+Macroalgae | Sheet-like  membraneous | Brown | Dictyotaceae,Pre-calibration,,Other algae
+Cnidaria,Pre-calibration,,Other
+Cnidaria | Hydroids,Pre-calibration,,Other Cnidarian
+Macroalgae | Laminate | Brown | Dictyotaceae | Padina,Pre-calibration,,Padina
+Macroalgae | Large canopy-forming | Brown | Sargassaceae | Sargassopsis,Pre-calibration,,Sargassopsis
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Sargassum,Pre-calibration,,Sargassum
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Sirophysalis,Pre-calibration,,Sirophysalis
+Sponges | Crusts | Encrusting,Pre-calibration,,Sponges
+Sponges | Massive forms | Simple,Pre-calibration,,Sponges
+Substrate,Pre-calibration,,Substrate
+Substrate | Consolidated (hard),Pre-calibration,,Substrate
+Substrate | Consolidated (hard) | Cobbles,Pre-calibration,,Substrate
+Substrate | Consolidated (hard) | Rock,Pre-calibration,,Substrate
+Substrate | Unconsolidated (soft),Pre-calibration,,Substrate
+Substrate | Unconsolidated (soft) | Pebble  gravel,Pre-calibration,,Substrate
+Substrate | Unconsolidated (soft) | Pebble  gravel | Biologenic | Coral rubble,Pre-calibration,,Substrate
+Substrate | Unconsolidated (soft) | Sand  mud (2mm) | Coarse sand (with shell fragments),Pre-calibration,,Substrate
+Macroalgae | Erect coarse branching | Brown | Sargassaceae | Turbinaria,Pre-calibration,,Turbinaria
