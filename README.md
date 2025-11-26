@@ -23,3 +23,6 @@ This repository is provided by the authors under the MIT License ([MIT](http://o
 [0b]: https://github.com/open-aims/bcs_mixing_model/issues/new
 [0c]: https://badges.frapsoft.com/os/v2/open-source.svg?v=103
 
+[![DOI](https://zenodo.org/badge/1011504785.svg)](https://doi.org/10.5281/zenodo.17718324)
+
+
